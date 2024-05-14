@@ -6,6 +6,7 @@ import asyncHandler from "../middlewares/asyncHandler.js";
 import {
   validateEmailAddress,
   validateUsernameLength,
+  validatePasswordLength,
 } from "../utils/validations.js";
 
 import generateHash from "../utils/generateHash.js";
@@ -176,4 +177,38 @@ export const updateCurrentUserProfile = asyncHandler(async (req, res) => {
       verified: updatedUser.verified,
     },
   });
+});
+
+// Controller function to update the current user's password
+export const resetPassword = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+
+  if (!user) {
+    return res.status(404).json({ error: "User not found!" });
+  }
+
+  const { oldPassword, newPassword } = req.body;
+
+  if (!oldPassword || !newPassword) {
+    return res.status(400).json({
+      error: "Both fields are required for update!",
+    });
+  }
+  const error = await validatePasswordLength(newPassword);
+  if (error) {
+    return res.status(400).json({ error: error });
+  }
+  if (oldPassword === newPassword) {
+    return res
+      .status(400)
+      .json({ error: "New password cannot be same as old!" });
+  }
+
+  const isPasswordValid = await bcrypt.compare(oldPassword, user.password);
+  if (!isPasswordValid) {
+    return res.status(401).json({ error: "Invalid old password!" });
+  }
+
+  await user.updateOne({ password: await generateHash(newPassword) });
+  res.status(200).json({ message: "Password updated successfully!" });
 });

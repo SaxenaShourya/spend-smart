@@ -5,6 +5,7 @@ import {
   logoutCurrentUser,
   getCurrentUserProfile,
   updateCurrentUserProfile,
+  resetPassword,
 } from "../controllers/userController.js";
 
 import {
@@ -43,5 +44,8 @@ router.route("/login").post(
 
 // Route for user logout
 router.delete("/logout", logoutCurrentUser);
+
+// Route for user password reset
+router.put("/reset-password", authenticateUser, resetPassword);
 
 export default router;
