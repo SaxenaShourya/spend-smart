@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs";
 
 import User from "../models/userModel.js";
+import OTP from "../models/otpModel.js";
 import asyncHandler from "../middlewares/asyncHandler.js";
 
 import {
@@ -8,9 +9,14 @@ import {
   validateUsernameLength,
   validatePasswordLength,
 } from "../utils/validations.js";
+import {
+  getLastResendTime,
+  updateLastResendTime,
+} from "../utils/OTPs/OTPCooldown.js";
 
 import generateHash from "../utils/generateHash.js";
 import generateCookie from "../utils/generateCookie.js";
+import sendOTPemail from "../utils/OTPs/sendOTPemail.js";
 
 // Controller function to register a new user
 export const registerUser = asyncHandler(async (req, res) => {
@@ -211,4 +217,29 @@ export const resetPassword = asyncHandler(async (req, res) => {
 
   await user.updateOne({ password: await generateHash(newPassword) });
   res.status(200).json({ message: "Password updated successfully!" });
+});
+
+// Controller function to send OTP
+export const sendOTP = asyncHandler(async (req, res) => {
+  const { email } = req.body;
+
+  const existingUser = await User.findOne({ email });
+  if (!existingUser) {
+    return res.status(404).json({ error: "Email is not registered!" });
+  }
+
+  const userID = existingUser._id;
+
+  const cooldownDuration = 60 * 1000; // 1 minute in milliseconds
+  const lastResendTime = await getLastResendTime(userID);
+
+  if (lastResendTime && Date.now() - lastResendTime < cooldownDuration) {
+    return res.status(429).json({
+      error: "Please wait for atleast 1 minute before requesting another OTP.",
+    });
+  }
+
+  await OTP.deleteMany({ userID });
+  await sendOTPemail({ _id: userID, email }, res);
+  await updateLastResendTime(userID);
 });

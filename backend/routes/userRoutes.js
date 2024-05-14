@@ -6,6 +6,7 @@ import {
   getCurrentUserProfile,
   updateCurrentUserProfile,
   resetPassword,
+  sendOTP,
 } from "../controllers/userController.js";
 
 import {
@@ -47,5 +48,7 @@ router.delete("/logout", logoutCurrentUser);
 
 // Route for user password reset
 router.put("/reset-password", authenticateUser, resetPassword);
+
+router.post("/send-otp", validate({ email: validateEmailAddress }), sendOTP);
 
 export default router;
