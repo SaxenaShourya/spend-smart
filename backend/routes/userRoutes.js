@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { registerUser } from "../controllers/userController.js";
+import { registerUser, loginUser } from "../controllers/userController.js";
 
 import {
   validateEmailAddress,
@@ -18,6 +18,15 @@ router.route("/").post(
     password: validatePasswordLength,
   }),
   registerUser
+);
+
+// Route for user login
+router.route("/login").post(
+  validate({
+    email: validateEmailAddress,
+    password: validatePasswordLength,
+  }),
+  loginUser
 );
 
 export default router;

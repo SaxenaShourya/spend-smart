@@ -1,3 +1,5 @@
+import bcrypt from "bcryptjs";
+
 import User from "../models/userModel.js";
 import asyncHandler from "../middlewares/asyncHandler.js";
 
@@ -34,6 +36,48 @@ export const registerUser = asyncHandler(async (req, res) => {
       username: newUser.username,
       email: newUser.email,
       verified: newUser.verified,
+    },
+  });
+});
+
+// Controller function to log in a user
+export const loginUser = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+
+  const existingUser = await User.findOne({ email });
+
+  if (!existingUser) {
+    return res.status(404).json({
+      error: "Email is not registered. Please register!",
+    });
+  }
+
+  if (!existingUser.verified) {
+    return res.status(401).json({
+      user: {
+        _id: existingUser._id,
+        username: existingUser.username,
+        email: existingUser.email,
+        verified: existingUser.verified,
+      },
+      error:
+        "Email is not verified. Please verify your email via otp to proceed.",
+    });
+  }
+
+  const isPasswordValid = await bcrypt.compare(password, existingUser.password);
+  if (!isPasswordValid) {
+    return res.status(401).json({ error: "Invalid user credentials!" });
+  }
+
+  await generateCookie(res, existingUser._id);
+  return res.status(200).json({
+    message: "Logged In Successfully!",
+    user: {
+      _id: existingUser._id,
+      username: existingUser.username,
+      email: existingUser.email,
+      verified: existingUser.verified,
     },
   });
 });
