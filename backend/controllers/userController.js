@@ -243,3 +243,47 @@ export const sendOTP = asyncHandler(async (req, res) => {
   await sendOTPemail({ _id: userID, email }, res);
   await updateLastResendTime(userID);
 });
+
+// Controller function to verify OTP
+export const verifyOTP = asyncHandler(async (req, res) => {
+  const { email, otp } = req.body;
+
+  const existingUser = await User.findOne({ email });
+  if (!existingUser) {
+    return res.status(404).json({ error: "User not found!" });
+  }
+  if (existingUser.verified) {
+    return res.status(400).json({ error: "Email is already verified!" });
+  }
+
+  const userID = existingUser._id;
+
+  const otpRecord = await OTP.findOne({ userID }).sort({ expiresAt: -1 });
+  if (!otpRecord) {
+    return res
+      .status(400)
+      .json({ error: "No valid OTP found. Please request a new OTP." });
+  }
+
+  if (otpRecord.expiresAt && otpRecord.expiresAt < Date.now()) {
+    await OTP.deleteMany({ userID });
+    return res.status(400).json({ error: "OTP has expired!" });
+  }
+
+  const validOTP = await bcrypt.compare(otp, otpRecord.otp);
+  if (!validOTP) {
+    return res
+      .status(400)
+      .json({ error: "Invalid OTP. Please check your inbox!" });
+  }
+
+  await User.updateOne({ _id: userID }, { verified: true });
+  await OTP.deleteMany({ userID });
+
+  const updatedUser = await User.findById(userID);
+
+  res.status(200).json({
+    user: updatedUser,
+    message: "Email has been verified successfully!",
+  });
+});

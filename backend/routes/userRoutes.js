@@ -7,12 +7,14 @@ import {
   updateCurrentUserProfile,
   resetPassword,
   sendOTP,
+  verifyOTP,
 } from "../controllers/userController.js";
 
 import {
   validateEmailAddress,
   validateUsernameLength,
   validatePasswordLength,
+  validateOTP,
 } from "../utils/validations.js";
 
 import validate from "../middlewares/validate.js";
@@ -49,6 +51,12 @@ router.delete("/logout", logoutCurrentUser);
 // Route for user password reset
 router.put("/reset-password", authenticateUser, resetPassword);
 
+// Route for sending and verifying otp
 router.post("/send-otp", validate({ email: validateEmailAddress }), sendOTP);
+router.post(
+  "/verify-otp",
+  validate({ email: validateEmailAddress, otp: validateOTP }),
+  verifyOTP
+);
 
 export default router;

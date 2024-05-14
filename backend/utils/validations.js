@@ -32,3 +32,11 @@ export const validateEmailAddress = (email) => {
   }
   return;
 };
+
+export const validateOTP = (otp) => {
+  const otpRegex = /^\d{4}$/;
+  if (!otpRegex.test(otp)) {
+    return "Invalid OTP!";
+  }
+  return;
+};
