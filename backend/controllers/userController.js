@@ -3,6 +3,11 @@ import bcrypt from "bcryptjs";
 import User from "../models/userModel.js";
 import asyncHandler from "../middlewares/asyncHandler.js";
 
+import {
+  validateEmailAddress,
+  validateUsernameLength,
+} from "../utils/validations.js";
+
 import generateHash from "../utils/generateHash.js";
 import generateCookie from "../utils/generateCookie.js";
 
@@ -113,4 +118,62 @@ export const getCurrentUserProfile = asyncHandler(async (req, res) => {
   } else {
     return res.status(404).json({ error: "User Not Found!" });
   }
+});
+
+// Controller function to update the current user's profile
+export const updateCurrentUserProfile = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+
+  if (!user) {
+    return res.status(404).json({ error: "User not found!" });
+  }
+
+  const { username, email } = req.body;
+
+  if (!username && !email) {
+    return res.status(400).json({
+      error: "At least one field is required for update!",
+    });
+  }
+
+  if (username === user.username && email === user.email) {
+    return res.status(400).json({ error: "No changes detected!" });
+  }
+
+  if (email && email !== user.email) {
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({
+        error:
+          "Email is already in use. Please choose a different email address!",
+      });
+    }
+  }
+
+  if (username) {
+    const error = validateUsernameLength(username);
+    if (error) {
+      return res.status(400).json({ error: error });
+    }
+    user.username = username;
+  }
+  if (email) {
+    const error = validateEmailAddress(email);
+    if (error) {
+      return res.status(400).json({ error: error });
+    }
+    user.email = email;
+  }
+
+  const updatedUser = await user.save();
+
+  return res.status(200).json({
+    message: "Profile updated Successfully!",
+    user: {
+      _id: updatedUser._id,
+      username: updatedUser.username,
+      email: updatedUser.email,
+      verified: updatedUser.verified,
+    },
+  });
 });

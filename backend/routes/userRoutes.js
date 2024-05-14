@@ -4,6 +4,7 @@ import {
   loginUser,
   logoutCurrentUser,
   getCurrentUserProfile,
+  updateCurrentUserProfile,
 } from "../controllers/userController.js";
 
 import {
@@ -17,6 +18,7 @@ import authenticateUser from "../middlewares/authenticateUser.js";
 
 const router = Router();
 
+// Route for user registration,updation and getting profile
 router
   .route("/")
   .get(authenticateUser, getCurrentUserProfile)
@@ -27,7 +29,8 @@ router
       password: validatePasswordLength,
     }),
     registerUser
-  );
+  )
+  .put(authenticateUser, updateCurrentUserProfile);
 
 // Route for user login
 router.route("/login").post(
