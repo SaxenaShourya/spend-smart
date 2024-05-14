@@ -1,0 +1,38 @@
+{
+  "name": "spend-smart-backend",
+  "version": "1.0.0",
+  "main": "app.js",
+  "keywords": [
+    "spend-smart",
+    "spend-smart-backend",
+    "finance",
+    "expense",
+    "income",
+    "budgeting tool",
+    "dashboard",
+    "transaction management",
+    "user-friendly"
+  ],
+  "author": "Shourya Saxena",
+  "license": "MIT",
+  "description": "Spend Smart is a user-friendly platform designed to streamline your financial management effortlessly. With Spend Smart, you can easily track expenses, manage income, and stay on top of your finances effortlessly. Easily add transactions, and navigate your dashboard with ease. Take control of your finances with Spend Smart.",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-async-handler": "^1.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.3.4",
+    "nodemailer": "^6.9.13",
+    "otp-generator": "^4.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
