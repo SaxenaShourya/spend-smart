@@ -95,3 +95,22 @@ export const logoutCurrentUser = asyncHandler(async (req, res) => {
     });
   }
 });
+
+// Controller function to get current user profile details.
+export const getCurrentUserProfile = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+
+  if (user) {
+    return res.status(200).json({
+      message: "User details retrieved successfully!",
+      user: {
+        _id: user._id,
+        username: user.username,
+        email: user.email,
+        verified: user.verified,
+      },
+    });
+  } else {
+    return res.status(404).json({ error: "User Not Found!" });
+  }
+});
