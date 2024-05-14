@@ -1,5 +1,9 @@
 import { Router } from "express";
-import { registerUser, loginUser } from "../controllers/userController.js";
+import {
+  registerUser,
+  loginUser,
+  logoutCurrentUser,
+} from "../controllers/userController.js";
 
 import {
   validateEmailAddress,
@@ -28,5 +32,8 @@ router.route("/login").post(
   }),
   loginUser
 );
+
+// Route for user logout
+router.delete("/logout", logoutCurrentUser);
 
 export default router;

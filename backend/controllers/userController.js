@@ -81,3 +81,17 @@ export const loginUser = asyncHandler(async (req, res) => {
     },
   });
 });
+
+// Controller function to logout a user
+export const logoutCurrentUser = asyncHandler(async (req, res) => {
+  const token = req.cookies.session;
+  if (token) {
+    res.clearCookie("session");
+
+    return res.status(200).json({ message: "Logged Out Successfully!" });
+  } else {
+    return res.status(401).json({
+      error: "You must be authenticated to access this resource!",
+    });
+  }
+});
