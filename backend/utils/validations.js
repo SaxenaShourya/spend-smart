@@ -105,3 +105,19 @@ export const validatePaginationParams = (page, pageSize) => {
   }
   return;
 };
+
+export const validateExpenseCategory = (category) => {
+  const allowedCategories = [
+    "groceries",
+    "utilities",
+    "transportation",
+    "healthcare",
+    "entertainment",
+    "clothing",
+    "other",
+  ];
+  if (!allowedCategories.includes(category)) {
+    return "Invalid category!";
+  }
+  return;
+};
