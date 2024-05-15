@@ -54,7 +54,7 @@ const Home = () => {
         />
         <div className="hidden sm:flex justify-center items-center mt-4">
           <Link
-            to="https://github.com/SaxenaShourya/smart-spend"
+            to="https://github.com/SaxenaShourya/spend-smart"
             target="_blank"
           >
             <Button color="primary" radius="sm">
