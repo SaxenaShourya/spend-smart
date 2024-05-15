@@ -154,3 +154,23 @@ export const getExpenses = asyncHandler(async (req, res) => {
     },
   });
 });
+
+// Controller function to get all expenses
+export const getAllExpenses = asyncHandler(async (req, res) => {
+  const expenses = await Expense.find({ user: req.user._id });
+
+  if (!expenses || expenses.length === 0) {
+    return res.status(404).json({ message: "No expenses found!" });
+  }
+
+  const totalExpense = expenses.reduce(
+    (acc, expense) => acc + expense.amount,
+    0
+  );
+
+  return res.status(200).json({
+    message: "All expenses retrieved successfully!",
+    expenses,
+    totalExpense,
+  });
+});

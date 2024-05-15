@@ -4,6 +4,7 @@ import {
   updateExpense,
   deleteExpense,
   getExpenses,
+  getAllExpenses,
 } from "../controllers/expenseController.js";
 import validate from "../middlewares/validate.js";
 
@@ -30,6 +31,8 @@ router
     }),
     addExpense
   );
+
+router.get("/all", getAllExpenses);
 
 router.route("/:id").put(updateExpense).delete(deleteExpense);
 
