@@ -1,5 +1,9 @@
 import { Router } from "express";
-import { addExpense, updateExpense } from "../controllers/expenseController.js";
+import {
+  addExpense,
+  updateExpense,
+  deleteExpense,
+} from "../controllers/expenseController.js";
 import validate from "../middlewares/validate.js";
 
 import {
@@ -23,6 +27,6 @@ router.route("/").post(
   addExpense
 );
 
-router.route("/:id").put(updateExpense);
+router.route("/:id").put(updateExpense).delete(deleteExpense);
 
 export default router;

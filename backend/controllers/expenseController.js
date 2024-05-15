@@ -97,3 +97,16 @@ export const updateExpense = asyncHandler(async (req, res) => {
     expense: updatedExpense,
   });
 });
+
+// Controller function to delete an expense
+export const deleteExpense = asyncHandler(async (req, res) => {
+  const expense = await Expense.findOneAndDelete({
+    _id: req.params.id,
+    user: req.user._id,
+  });
+  if (!expense) {
+    return res.status(404).json({ error: "Expense not found!" });
+  }
+
+  return res.status(200).json({ message: "Expense deleted successfully!" });
+});
