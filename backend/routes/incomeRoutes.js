@@ -4,6 +4,7 @@ import {
   updateIncome,
   deleteIncome,
   getIncomes,
+  getAllIncomes,
 } from "../controllers/incomeController.js";
 
 import {
@@ -30,6 +31,8 @@ router
     }),
     addIncome
   );
+
+router.get("/all", getAllIncomes);
 
 router.route("/:id").put(updateIncome).delete(deleteIncome);
 

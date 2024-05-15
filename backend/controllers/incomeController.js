@@ -153,3 +153,20 @@ export const getIncomes = asyncHandler(async (req, res) => {
     },
   });
 });
+
+// Controller function to get all incomes
+export const getAllIncomes = asyncHandler(async (req, res) => {
+  const incomes = await Income.find({ user: req.user._id });
+
+  if (!incomes || incomes.length === 0) {
+    return res.status(404).json({ message: "No incomes found!" });
+  }
+
+  const totalIncome = incomes.reduce((acc, income) => acc + income.amount, 0);
+
+  return res.status(200).json({
+    message: "All incomes retrieved successfully!",
+    incomes,
+    totalIncome,
+  });
+});
