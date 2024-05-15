@@ -1,9 +1,26 @@
 import { Router } from "express";
+import { addIncome } from "../controllers/incomeController.js";
+
+import {
+  validateTitleLength,
+  validateDescriptionLength,
+  validateIncomeCategory,
+  validateAmount,
+  validateDate,
+} from "../utils/validations.js";
+import validate from "../middlewares/validate.js";
 
 const router = Router();
 
-router.route("/").get((req, res) => {
-  res.json({ success: "Income Route" });
-});
+router.route("/").post(
+  validate({
+    title: validateTitleLength,
+    description: validateDescriptionLength,
+    amount: validateAmount,
+    category: validateIncomeCategory,
+    date: validateDate,
+  }),
+  addIncome
+);
 
 export default router;
