@@ -1,7 +1,16 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
+
+import { Home } from "./pages";
 
 const App = () => {
-  return <h1 className="text-4xl text-center">Spend Smart</h1>;
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </>
+  );
 };
 
 export default App;
