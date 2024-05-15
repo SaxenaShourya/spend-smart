@@ -92,3 +92,16 @@ export const validateDescriptionLength = (description) => {
   }
   return;
 };
+
+export const validatePaginationParams = (page, pageSize) => {
+  const pageNumber = parseInt(page);
+  const size = parseInt(pageSize);
+
+  if (isNaN(pageNumber) || pageNumber < 1) {
+    return "Invalid page number!";
+  }
+  if (isNaN(size) || size < 1) {
+    return "Invalid page size!";
+  }
+  return;
+};
