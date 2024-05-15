@@ -5,6 +5,9 @@ import cookieParser from "cookie-parser";
 import connectDB from "./config/db.js";
 
 import userRoutes from "./routes/userRoutes.js";
+import incomeRoutes from "./routes/incomeRoutes.js";
+
+import authenticateUser from "./middlewares/authenticateUser.js";
 
 // ⚠️⚠️⚠️ Note ⚠️⚠️⚠️
 // If you're a developer viewing this code in my repository, please make sure to create your own .env file with the necessary environment variables as it is not provided in this repository.
@@ -23,6 +26,7 @@ app.use(cookieParser());
 
 // Routes
 app.use("/api/v1/users", userRoutes);
+app.use("/api/v1/incomes", authenticateUser, incomeRoutes);
 
 // Start Server
 const startServer = async () => {
