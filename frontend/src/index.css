@@ -40,3 +40,13 @@
     @apply bg-primary-600;
   }
 }
+
+@layer utilities {
+  .animateBottom::before {
+    @apply content-[""] absolute bottom-0 left-0 w-0 h-[2px] bg-primary rounded-full;
+    transition: all 0.6s cubic-bezier(0.53, 0.21, 0, 1);
+  }
+  .animateBottom:hover::before {
+    @apply w-full;
+  }
+}
