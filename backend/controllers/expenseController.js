@@ -7,6 +7,7 @@ import {
   validateExpenseCategory,
   validateAmount,
   validateDate,
+  validatePaginationParams,
 } from "../utils/validations.js";
 
 // Controller function to add new expense
@@ -109,4 +110,47 @@ export const deleteExpense = asyncHandler(async (req, res) => {
   }
 
   return res.status(200).json({ message: "Expense deleted successfully!" });
+});
+
+// Controller function to get all expenses
+export const getExpenses = asyncHandler(async (req, res) => {
+  const page = parseInt(req.query.page) || 1;
+  const pageSize = parseInt(req.query.pageSize) || 10;
+
+  const paginationError = validatePaginationParams(page, pageSize);
+  if (paginationError) {
+    return res.status(400).json({ error: paginationError });
+  }
+
+  const skip = (page - 1) * pageSize;
+  const limit = pageSize;
+
+  const expenses = await Expense.find({ user: req.user._id })
+    .skip(skip)
+    .limit(limit);
+  if (!expenses || expenses.length === 0) {
+    return res.status(404).json({ message: "No expenses found!" });
+  }
+
+  const totalCount = await Expense.countDocuments({ user: req.user._id });
+  const totalPages = Math.ceil(totalCount / pageSize);
+
+  const totalExpenses = await Expense.find({ user: req.user._id });
+
+  const totalExpense = totalExpenses.reduce(
+    (acc, expense) => acc + expense.amount,
+    0
+  );
+
+  return res.status(200).json({
+    message: "All expenses retrieved successfully!",
+    expenses,
+    totalExpense,
+    pagination: {
+      currentPage: page,
+      totalPages,
+      totalCount,
+      pageSize,
+    },
+  });
 });

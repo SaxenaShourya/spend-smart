@@ -3,6 +3,7 @@ import {
   addExpense,
   updateExpense,
   deleteExpense,
+  getExpenses,
 } from "../controllers/expenseController.js";
 import validate from "../middlewares/validate.js";
 
@@ -16,16 +17,19 @@ import {
 
 const router = Router();
 
-router.route("/").post(
-  validate({
-    title: validateTitleLength,
-    description: validateDescriptionLength,
-    amount: validateAmount,
-    category: validateExpenseCategory,
-    date: validateDate,
-  }),
-  addExpense
-);
+router
+  .route("/")
+  .get(getExpenses)
+  .post(
+    validate({
+      title: validateTitleLength,
+      description: validateDescriptionLength,
+      amount: validateAmount,
+      category: validateExpenseCategory,
+      date: validateDate,
+    }),
+    addExpense
+  );
 
 router.route("/:id").put(updateExpense).delete(deleteExpense);
 
