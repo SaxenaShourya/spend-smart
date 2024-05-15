@@ -110,3 +110,46 @@ export const deleteIncome = asyncHandler(async (req, res) => {
 
   return res.status(200).json({ message: "Income deleted successfully!" });
 });
+
+// Controller function to get all incomes
+export const getIncomes = asyncHandler(async (req, res) => {
+  const page = parseInt(req.query.page) || 1;
+  const pageSize = parseInt(req.query.pageSize) || 10;
+
+  const paginationError = validatePaginationParams(page, pageSize);
+  if (paginationError) {
+    return res.status(400).json({ error: paginationError });
+  }
+
+  const skip = (page - 1) * pageSize;
+  const limit = pageSize;
+
+  const incomes = await Income.find({ user: req.user._id })
+    .skip(skip)
+    .limit(limit);
+  if (!incomes || incomes.length === 0) {
+    return res.status(404).json({ message: "No incomes found!" });
+  }
+
+  const totalCount = await Income.countDocuments({ user: req.user._id });
+  const totalPages = Math.ceil(totalCount / pageSize);
+
+  const totalExpenses = await Income.find({ user: req.user._id });
+
+  const totalIncome = totalExpenses.reduce(
+    (acc, income) => acc + income.amount,
+    0
+  );
+
+  return res.status(200).json({
+    message: "All incomes retrieved successfully!",
+    incomes,
+    totalIncome,
+    pagination: {
+      currentPage: page,
+      totalPages,
+      totalCount,
+      pageSize,
+    },
+  });
+});

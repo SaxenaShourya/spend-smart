@@ -3,6 +3,7 @@ import {
   addIncome,
   updateIncome,
   deleteIncome,
+  getIncomes,
 } from "../controllers/incomeController.js";
 
 import {
@@ -16,16 +17,19 @@ import validate from "../middlewares/validate.js";
 
 const router = Router();
 
-router.route("/").post(
-  validate({
-    title: validateTitleLength,
-    description: validateDescriptionLength,
-    amount: validateAmount,
-    category: validateIncomeCategory,
-    date: validateDate,
-  }),
-  addIncome
-);
+router
+  .route("/")
+  .get(getIncomes)
+  .post(
+    validate({
+      title: validateTitleLength,
+      description: validateDescriptionLength,
+      amount: validateAmount,
+      category: validateIncomeCategory,
+      date: validateDate,
+    }),
+    addIncome
+  );
 
 router.route("/:id").put(updateIncome).delete(deleteIncome);
 
