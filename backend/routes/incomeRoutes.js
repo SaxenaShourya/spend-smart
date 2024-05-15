@@ -1,5 +1,9 @@
 import { Router } from "express";
-import { addIncome, updateIncome } from "../controllers/incomeController.js";
+import {
+  addIncome,
+  updateIncome,
+  deleteIncome,
+} from "../controllers/incomeController.js";
 
 import {
   validateTitleLength,
@@ -23,6 +27,6 @@ router.route("/").post(
   addIncome
 );
 
-router.route("/:id").put(updateIncome);
+router.route("/:id").put(updateIncome).delete(deleteIncome);
 
 export default router;

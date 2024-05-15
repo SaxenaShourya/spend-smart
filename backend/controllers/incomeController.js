@@ -97,3 +97,16 @@ export const updateIncome = asyncHandler(async (req, res) => {
     .status(200)
     .json({ message: "Income updated successfully!", income: updatedIncome });
 });
+
+// Controller function to delete an income
+export const deleteIncome = asyncHandler(async (req, res) => {
+  const income = await Income.findOneAndDelete({
+    _id: req.params.id,
+    user: req.user._id,
+  });
+  if (!income) {
+    return res.status(404).json({ error: "Income not found!" });
+  }
+
+  return res.status(200).json({ message: "Income deleted successfully!" });
+});
