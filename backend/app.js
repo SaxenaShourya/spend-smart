@@ -6,6 +6,7 @@ import connectDB from "./config/db.js";
 
 import userRoutes from "./routes/userRoutes.js";
 import incomeRoutes from "./routes/incomeRoutes.js";
+import expenseRoutes from "./routes/expenseRoutes.js";
 
 import authenticateUser from "./middlewares/authenticateUser.js";
 
@@ -27,6 +28,7 @@ app.use(cookieParser());
 // Routes
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/incomes", authenticateUser, incomeRoutes);
+app.use("/api/v1/expenses", authenticateUser, expenseRoutes);
 
 // Start Server
 const startServer = async () => {
