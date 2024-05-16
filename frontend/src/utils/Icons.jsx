@@ -21,6 +21,7 @@ import { RxDashboard } from "react-icons/rx";
 import { TbMoneybag, TbEdit } from "react-icons/tb";
 import { BiDollarCircle, BiMoneyWithdraw } from "react-icons/bi";
 import { LuMenu } from "react-icons/lu";
+import { FiTrash } from "react-icons/fi";
 
 export const Register = RiShieldUserFill;
 export const Login = RiLoginCircleLine;
@@ -45,3 +46,4 @@ export const Category = IoPricetag;
 export const Add = IoAddCircleOutline;
 export const Amount = BiMoneyWithdraw;
 export const Edit = TbEdit;
+export const Delete = FiTrash;
