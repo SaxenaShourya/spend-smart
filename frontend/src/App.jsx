@@ -4,7 +4,7 @@ import { ToastContainer, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import TopLoadingBar from "./components/TopLoadingBar";
-import { Home, NotFound, Register } from "./pages";
+import { Home, NotFound, Register, Login } from "./pages";
 
 const App = () => {
   return (
@@ -21,6 +21,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
