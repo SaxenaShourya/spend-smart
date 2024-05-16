@@ -4,7 +4,7 @@ import {
   RiShutDownLine,
 } from "react-icons/ri";
 import { FaPersonSnowboarding, FaCircleUser } from "react-icons/fa6";
-import { PiDotsThreeOutlineDuotone } from "react-icons/pi";
+import { PiDotsThreeOutlineDuotone, PiPiggyBank } from "react-icons/pi";
 import { TiHome } from "react-icons/ti";
 import { HiMail } from "react-icons/hi";
 import { BsFillShieldLockFill } from "react-icons/bs";
@@ -32,3 +32,4 @@ export const Expense = BiDollarCircle;
 export const Settings = IoSettingsOutline;
 export const ShutDown = RiShutDownLine;
 export const Menu = LuMenu;
+export const Balance = PiPiggyBank;

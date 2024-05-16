@@ -5,3 +5,4 @@ export { default as Login } from "./Login";
 
 // Protected Routes
 export { default as Dashboard } from "./ProtectedPages/Dashboard";
+export { default as MainDashboard } from "./ProtectedPages/MainDashboard";
