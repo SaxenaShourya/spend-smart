@@ -5,6 +5,7 @@ import { TiHome } from "react-icons/ti";
 import { HiMail } from "react-icons/hi";
 import { BsFillShieldLockFill } from "react-icons/bs";
 import { IoEye, IoEyeOff } from "react-icons/io5";
+import { FaSnowboarding } from "react-icons/fa";
 
 export const Register = RiShieldUserFill;
 export const Login = RiLoginCircleLine;
@@ -16,3 +17,4 @@ export const Email = HiMail;
 export const Password = BsFillShieldLockFill;
 export const Eye = IoEye;
 export const EyeOff = IoEyeOff;
+export const Logout = FaSnowboarding;
