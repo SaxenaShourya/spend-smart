@@ -23,7 +23,7 @@ import { Title, Category, Amount, Edit } from "../../utils/Icons";
 import {
   closeModal,
   setRefetch,
-} from "../features/transactionModals/viewAndUpdateModal";
+} from "../../features/TransactionModals/viewAndUpdateModal";
 import { updateLoader } from "../../features/loader/loaderSlice";
 import { useUpdateExpenseMutation } from "../../features/api/apiSlices/expenseApiSlice";
 import { useUpdateIncomeMutation } from "../../features/api/apiSlices/incomeApiSlice";

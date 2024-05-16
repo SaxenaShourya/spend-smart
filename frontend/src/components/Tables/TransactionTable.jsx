@@ -13,9 +13,9 @@ import {
   Spinner,
 } from "@nextui-org/react";
 import { useDispatch } from "react-redux";
-import { openModal as deleteModal } from "../../features/transactionModals/deleteModal";
-import { openModal as viewAndUpdateModal } from "../../features/transactionModals/viewAndUpdateModal";
-import { Eye, Edit, Delete } from "../../utils/Icons";
+import { openModal as deleteModal } from "../../features/TransactionModals/deleteModal";
+import { openModal as viewAndUpdateModal } from "../../features/TransactionModals/viewAndUpdateModal";
+import { EyeOutline as Eye, Edit, Delete } from "../../utils/Icons";
 
 const TransactionTable = ({
   data,

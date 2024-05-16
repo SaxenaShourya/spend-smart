@@ -15,6 +15,7 @@ import {
   IoDocumentTextOutline,
   IoPricetag,
   IoAddCircleOutline,
+  IoEyeOutline,
 } from "react-icons/io5";
 import { FaSnowboarding } from "react-icons/fa";
 import { RxDashboard } from "react-icons/rx";
@@ -47,3 +48,4 @@ export const Add = IoAddCircleOutline;
 export const Amount = BiMoneyWithdraw;
 export const Edit = TbEdit;
 export const Delete = FiTrash;
+export const EyeOutline = IoEyeOutline;

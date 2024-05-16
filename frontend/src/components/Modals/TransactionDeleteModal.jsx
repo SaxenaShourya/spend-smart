@@ -16,7 +16,7 @@ import { useDeleteExpenseMutation } from "../../features/api/apiSlices/expenseAp
 import {
   closeModal,
   setRefetch,
-} from "../../features/transactionModals/deleteModal";
+} from "../../features/TransactionModals/deleteModal";
 import { updateLoader } from "../../features/loader/loaderSlice";
 
 const TransactionDeleteModal = () => {

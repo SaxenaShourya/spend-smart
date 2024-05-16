@@ -42,6 +42,6 @@ export const {
   useGetAllExpensesQuery,
   useGetExpenseQuery,
   useAddExpenseMutation,
-  useUpdateExpenseMutations,
+  useUpdateExpenseMutation,
   useDeleteExpenseMutation,
 } = expenseApiSlice;
