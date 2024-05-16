@@ -9,7 +9,15 @@ export const expenseApiSlice = apiSlice.injectEndpoints({
         method: "GET",
       }),
     }),
+    addExpense: builder.mutation({
+      query: (data) => ({
+        url: `${EXPENSES_URL}`,
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
 });
 
-export const { useGetAllExpensesQuery } = expenseApiSlice;
+export const { useGetAllExpensesQuery, useAddExpenseMutation } =
+  expenseApiSlice;
