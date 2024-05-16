@@ -7,3 +7,4 @@ export { default as Login } from "./Login";
 export { default as Dashboard } from "./ProtectedPages/Dashboard";
 export { default as MainDashboard } from "./ProtectedPages/MainDashboard";
 export { default as Incomes } from "./ProtectedPages/Incomes";
+export { default as Expenses } from "./ProtectedPages/Expenses";
