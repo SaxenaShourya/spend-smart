@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import TopLoadingBar from "./components/TopLoadingBar";
 import { Home, NotFound, Register, Login } from "./pages";
+import { PublicRoutes } from "./components/Guards";
 
 const App = () => {
   return (
@@ -20,8 +21,11 @@ const App = () => {
       />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<PublicRoutes />}>
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+        </Route>
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
