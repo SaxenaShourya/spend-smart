@@ -29,11 +29,18 @@ export const expenseApiSlice = apiSlice.injectEndpoints({
         method: "DELETE",
       }),
     }),
+    getExpense: builder.query({
+      query: ({ page = 1, pageSize = 10 }) => ({
+        url: `${EXPENSES_URL}?page=${page}&pageSize=${pageSize}`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
 export const {
   useGetAllExpensesQuery,
+  useGetExpenseQuery,
   useAddExpenseMutation,
   useUpdateExpenseMutations,
   useDeleteExpenseMutation,
