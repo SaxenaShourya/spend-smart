@@ -1,0 +1,49 @@
+[33mb11810f[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m feat(frontend/components): Add username input component
+[33m1b1bb4c[m feat(frontend/state): Add auth slice
+[33mc74f5d9[m feat(frontend/components): Update top loader based on state
+[33ma22013f[m feat(frontend/state): Add top loader slice
+[33m3ed7e08[m[33m ([m[1;31morigin/main[m[33m)[m fix(frontend/home): Fix link conflict bug
+[33m01b1719[m feat(frontend): Add toast container using react-toastify
+[33m7cee93e[m feat(frontend/components): Add top loading bar component
+[33m04a620a[m feat(frontend/pages): Add 404 Not found page
+[33m29402d8[m feat(frontend/pages): Add homepage
+[33m6638dbf[m feat(frontend/components): Add navbar component
+[33m85d5960[m feat(backend/expense): Add controller for getting all expenses
+[33m1ee586f[m feat(backend/expense): Add controller for getting expenses with pagination
+[33m5383ed8[m feat(backend/expense): Add controller for deleting expenses
+[33m48a4602[m feat(backend/expense): Add controller for updating expenses
+[33mac00d11[m feat(backend/expense): Add controller for adding expenses
+[33m6cbde38[m feat(backend/utility): Add validations utility for expense categories
+[33m05dc7f3[m feat(backend/expense): Add expense schema
+[33mc81f298[m feat(backend/expense): Add expense route
+[33m463ff53[m feat(backend/income): Add controller for getting all incomes
+[33mf4dbcf0[m feat(backend/income): Add controller for getting incomes with pagination
+[33m3f08b9a[m feat(backend/utility): Add validation for pagination parameters
+[33m61d748e[m feat(backend/income): Add controller for deleting incomes
+[33mecc860c[m feat(backend/income): Add controller for updating incomes
+[33m7950149[m feat(backend/income): Add controller for adding incomes
+[33m7b52733[m feat(backend/utility): Add validations utility for incomes and expenses
+[33m67e4031[m feat(backend/income): Add income schema
+[33m3d9a1aa[m feat(backend/income): Add income route
+[33m658ff06[m feat(backend/user): Add OTP verification controller and route
+[33mc3af3c9[m feat(backend/user): Add controllers and route to send OTP emails
+[33m9750c84[m feat(backend/util): Add OTP cooldown utility functions
+[33m761596c[m feat(backend/utility): Add otp sending utility function via email
+[33mddc0899[m feat(backend/user): Add OTP model
+[33mbea2842[m feat(backend/user): Add reset password controller and routes
+[33mc0d5413[m feat(backend/user): Add controller for updating user details
+[33mc48bcaa[m feat(backend/user): Add controller for retrieving user details
+[33m2777c03[m feat(backend/user): Add user authentication middleware
+[33m7305729[m chore(backend/middlewares): Add middleware configuration
+[33m8954f27[m feat(backend/user): Add logout controller and routes
+[33mac77acf[m feat(backend/user): Add login controller and routes
+[33md696e72[m feat(backend/user): Add user registration controller
+[33m33113be[m feat(backend/utils): Add generateCookie utility
+[33md83c80d[m feat(backend/utils): Add generateHash utility
+[33m011253e[m feat(backend/middlewares): Add validate middleware
+[33m915be22[m feat(backend/utils): Add validations file
+[33m8a3f1b9[m feat(backend/user): Add user controller
+[33md42f347[m feat(backend/middlewares): Add asyncHandler middleware
+[33mdc0cdf0[m feat(backend/user): Add user routes file
+[33mcc484ab[m feat(backend/user): Add user schema
+[33md1b05c7[m feat(init): Initialize project with starter files
