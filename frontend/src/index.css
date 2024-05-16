@@ -49,4 +49,10 @@
   .animateBottom:hover::before {
     @apply w-full;
   }
+  .box-shadow {
+    @apply shadow-[rgba(0,_0,_0,_0.4)_0px_30px_90px];
+  }
+  .action-btn {
+    @apply text-secondary underline px-2 py-[0.1rem] font-nunito transition-all hover:text-primary hover:bg-secondary hover:rounded-full hover:no-underline cursor-pointer;
+  }
 }
