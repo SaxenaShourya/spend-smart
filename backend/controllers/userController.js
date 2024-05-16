@@ -283,7 +283,12 @@ export const verifyOTP = asyncHandler(async (req, res) => {
   const updatedUser = await User.findById(userID);
 
   res.status(200).json({
-    user: updatedUser,
+    user: {
+      _id: updatedUser._id,
+      username: updatedUser.username,
+      email: updatedUser.email,
+      verified: updatedUser.verified,
+    },
     message: "Email has been verified successfully!",
   });
 });
