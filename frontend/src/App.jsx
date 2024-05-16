@@ -11,6 +11,7 @@ import {
   Login,
   Dashboard,
   MainDashboard,
+  Incomes,
 } from "./pages";
 import { PublicRoutes, ProtectedRoutes } from "./components/Guards";
 
@@ -35,6 +36,7 @@ const App = () => {
         <Route path="/" element={<ProtectedRoutes />}>
           <Route path="/dashboard" element={<Dashboard />}>
             <Route path="/dashboard" element={<MainDashboard />} />
+            <Route path="/dashboard/incomes" element={<Incomes />} />
           </Route>
         </Route>
 
