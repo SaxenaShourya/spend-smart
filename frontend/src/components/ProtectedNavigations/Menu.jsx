@@ -11,7 +11,7 @@ import {
 } from "@nextui-org/react";
 
 import {
-  Menu,
+  Menu as MenuIcon,
   Dashboard,
   Income,
   Expense,
@@ -35,7 +35,7 @@ const Menu = () => {
       <DropdownTrigger>
         <Button
           color="primary"
-          startContent={<Menu />}
+          startContent={<MenuIcon />}
           onClick={toggleMenu}
           isIconOnly
         />
