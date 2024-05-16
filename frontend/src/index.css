@@ -67,4 +67,7 @@
   .icon-second {
     @apply size-[3rem] text-primary bg-primary-50 flex justify-center items-center p-2 rounded-full text-3xl;
   }
+  .box-shadow-second {
+    @apply shadow-[rgba(0,_0,_0,_0.25)_0px_20px_40px];
+  }
 }
