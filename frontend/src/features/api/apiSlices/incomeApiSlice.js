@@ -22,6 +22,12 @@ export const incomeApiSlice = apiSlice.injectEndpoints({
         method: "DELETE",
       }),
     }),
+    getIncome: builder.query({
+      query: ({ page = 1, pageSize = 10 }) => ({
+        url: `${INCOMES_URL}?page=${page}&pageSize=${pageSize}`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
@@ -29,4 +35,5 @@ export const {
   useGetAllIncomesQuery,
   useUpdateIncomeMutation,
   useDeleteIncomeMutation,
+  useGetIncomeQuery,
 } = incomeApiSlice;
