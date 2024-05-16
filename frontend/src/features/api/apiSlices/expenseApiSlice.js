@@ -23,6 +23,12 @@ export const expenseApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    deleteExpense: builder.mutation({
+      query: (_id) => ({
+        url: `${EXPENSES_URL}/${_id}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
@@ -30,4 +36,5 @@ export const {
   useGetAllExpensesQuery,
   useAddExpenseMutation,
   useUpdateExpenseMutations,
+  useDeleteExpenseMutation,
 } = expenseApiSlice;
