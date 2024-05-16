@@ -16,8 +16,17 @@ export const incomeApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    deleteIncome: builder.mutation({
+      query: (_id) => ({
+        url: `${INCOMES_URL}/${_id}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
-export const { useGetAllIncomesQuery, useUpdateIncomeMutation } =
-  incomeApiSlice;
+export const {
+  useGetAllIncomesQuery,
+  useUpdateIncomeMutation,
+  useDeleteIncomeMutation,
+} = incomeApiSlice;
