@@ -9,6 +9,13 @@ export const incomeApiSlice = apiSlice.injectEndpoints({
         method: "GET",
       }),
     }),
+    addIncome: builder.mutation({
+      query: (data) => ({
+        url: `${INCOMES_URL}`,
+        method: "POST",
+        body: data,
+      }),
+    }),
     updateIncome: builder.mutation({
       query: ({ _id, data }) => ({
         url: `${INCOMES_URL}/${_id}`,
@@ -36,4 +43,5 @@ export const {
   useUpdateIncomeMutation,
   useDeleteIncomeMutation,
   useGetIncomeQuery,
+  useAddIncomeMutation,
 } = incomeApiSlice;
