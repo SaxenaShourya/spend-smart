@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { Avatar } from "@nextui-org/react";
 import { Link } from "react-router-dom";
 
-import { Settings, SignOut } from "../../utils/Icons";
+import { Settings, ShutDown as Logout } from "../../utils/Icons";
 import arrow from "../../assets/arrow.gif";
 import avatar from "../../assets/avatar.webp";
 import { openModal } from "../../features/logoutModal/logoutModalSlice";
@@ -41,7 +41,7 @@ const TopBar = () => {
           }`}
           onClick={() => navigate("/dashboard/settings")}
         />
-        <SignOut
+        <Logout
           className="p-1 border-1 border-secondary rounded-lg size-[1.8rem] transition-all cursor-pointer hover:bg-error hover:text-white"
           onClick={() => dispatch(openModal())}
         />
