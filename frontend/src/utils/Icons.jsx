@@ -18,7 +18,7 @@ import {
 } from "react-icons/io5";
 import { FaSnowboarding } from "react-icons/fa";
 import { RxDashboard } from "react-icons/rx";
-import { TbMoneybag } from "react-icons/tb";
+import { TbMoneybag, TbEdit } from "react-icons/tb";
 import { BiDollarCircle, BiMoneyWithdraw } from "react-icons/bi";
 import { LuMenu } from "react-icons/lu";
 
@@ -44,3 +44,4 @@ export const Title = IoDocumentTextOutline;
 export const Category = IoPricetag;
 export const Add = IoAddCircleOutline;
 export const Amount = BiMoneyWithdraw;
+export const Edit = TbEdit;
