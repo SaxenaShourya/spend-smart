@@ -4,7 +4,7 @@ import { ToastContainer, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import TopLoadingBar from "./components/TopLoadingBar";
-import { Home, NotFound, Register, Login } from "./pages";
+import { Home, NotFound, Register, Login, Dashboard } from "./pages";
 import { PublicRoutes, ProtectedRoutes } from "./components/Guards";
 
 const App = () => {
@@ -25,7 +25,9 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
         </Route>
-        <Route path="/" element={<ProtectedRoutes />}></Route>
+        <Route path="/" element={<ProtectedRoutes />}>
+          <Route path="/dashboard" element={<Dashboard />}></Route>
+        </Route>
 
         <Route path="*" element={<NotFound />} />
       </Routes>
