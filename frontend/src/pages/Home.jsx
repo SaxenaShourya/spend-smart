@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Button } from "@nextui-org/react";
 import { useNavigate, Link } from "react-router-dom";
 import { TypeAnimation } from "react-type-animation";
@@ -10,9 +11,16 @@ import { StartNow, ThreeDots } from "../utils/Icons";
 
 const Home = () => {
   const navigate = useNavigate();
+  const userIsVerified = useSelector((state) => state.auth?.user?.verified);
+
+  useEffect(() => {
+    if (userIsVerified) {
+      navigate("/dashboard");
+    }
+  }, [userIsVerified]);
 
   return (
-    <main className={"w-full h-full"}>
+    <main className={`${userIsVerified ? "hidden" : ""} w-full h-full`}>
       <NavBar />
       <div className="bg-primary-50 pb-4 pt-12 sm:pt-0 gap-y-12 flex flex-col sm:block sm:h-full">
         <div className="w-full  sm:h-[65vh] flex flex-col justify-center items-center order-2 sm:order-1">
