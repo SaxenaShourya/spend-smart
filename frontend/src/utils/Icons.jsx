@@ -3,7 +3,7 @@ import {
   RiLoginCircleLine,
   RiShutDownLine,
 } from "react-icons/ri";
-import { FaPersonSnowboarding, FaCircleUser } from "react-icons/fa6";
+import { FaPersonSnowboarding, FaCircleUser, FaUserPen } from "react-icons/fa6";
 import { PiDotsThreeOutlineDuotone, PiPiggyBank } from "react-icons/pi";
 import { TiHome } from "react-icons/ti";
 import { HiMail } from "react-icons/hi";
@@ -23,6 +23,7 @@ import { TbMoneybag, TbEdit } from "react-icons/tb";
 import { BiDollarCircle, BiMoneyWithdraw } from "react-icons/bi";
 import { LuMenu } from "react-icons/lu";
 import { FiTrash } from "react-icons/fi";
+import { MdLockReset } from "react-icons/md";
 
 export const Register = RiShieldUserFill;
 export const Login = RiLoginCircleLine;
@@ -49,3 +50,5 @@ export const Amount = BiMoneyWithdraw;
 export const Edit = TbEdit;
 export const Delete = FiTrash;
 export const EyeOutline = IoEyeOutline;
+export const UpdateProfile = FaUserPen;
+export const ResetPassword = MdLockReset;
