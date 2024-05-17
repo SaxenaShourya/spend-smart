@@ -37,6 +37,12 @@ export const userApiSlice = apiSlice.injectEndpoints({
         method: "DELETE",
       }),
     }),
+    getUserDetails: builder.query({
+      query: () => ({
+        url: `${USERS_URL}`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
@@ -46,4 +52,5 @@ export const {
   useVerifyOtpMutation,
   useLoginMutation,
   useLogoutMutation,
+  useGetUserDetailsQuery,
 } = userApiSlice;
