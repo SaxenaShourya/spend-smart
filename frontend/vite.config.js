@@ -1,9 +1,10 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import removeConsole from "vite-plugin-remove-console";
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
+export default defineConfig(({ mode }) => ({
+  plugins: [react(), mode === "production" && removeConsole()].filter(Boolean),
   server: {
     host: true,
     strictPort: true,
@@ -15,4 +16,4 @@ export default defineConfig({
       },
     },
   },
-});
+}));
