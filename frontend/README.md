@@ -16,7 +16,7 @@ Follow these steps to set up the Spend Smart frontend on your local machine:
 ### Clone the repository:
 
 ```bash
-git clone https://github.com/SaxenaShourya/smart-spend.git
+git clone https://github.com/SaxenaShourya/spend-smart.git
 ```
 
 ### Frontend Setup
