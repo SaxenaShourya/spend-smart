@@ -22,8 +22,8 @@ const Home = () => {
   return (
     <main className={`${userIsVerified ? "hidden" : ""} w-full h-full`}>
       <NavBar />
-      <div className="bg-primary-50 pb-4 pt-12 sm:pt-0 gap-y-12 flex flex-col sm:block sm:h-full">
-        <div className="w-full  sm:h-[65vh] flex flex-col justify-center items-center order-2 sm:order-1">
+      <div className="bg-primary-50 pb-4 pt-12 sm:pt-0 gap-y-12 flex flex-col sm:block h-[90vh] sm:h-full">
+        <div className="w-full sm:h-[65vh] flex flex-col justify-center items-center order-2 sm:order-1">
           <h2 className="text-4xl md:text-5xl xl:text-7xl">
             Track your{" "}
             <TypeAnimation
