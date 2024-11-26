@@ -30,7 +30,7 @@ const NavBar = () => {
       <div className="hidden xmd:flex items-center space-x-4">
         <img src={arrow} alt="" className="w-[35px]" />
         <Link
-          to="https://www.linkedin.com/in/shouryasaxena/"
+          to="https://www.linkedin.com/in/saxena-shourya/"
           target="_blank"
           className="text-xl text-secondary transition-all hover:text-primary relative animateBottom"
         >
